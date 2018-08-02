@@ -26,24 +26,9 @@ runner.Step("Policy Table Update Certificate", common.policyTableUpdate, { commo
 runner.Step("Activate App", common.activateApp)
 
 runner.Title("Test")
-runner.Step("PutFile. Session Insecure. Sent data UNprotected", common.putFileByFrames, {
-  { isSessionEncrypted = false, isSentDataEncrypted = false }
-})
-runner.Step("PutFile. Session Insecure. Sent data UNprotected + Malformed frame", common.putFileByFrames, {
-  { isSessionEncrypted = false, isSentDataEncrypted = false, isMalformedFrameInserted = true }
-})
 runner.Step("Switch RPC service to Protected mode", common.startServiceProtected, { 7 })
-runner.Step("PutFile. Session Secure. Sent data UNprotected", common.putFileByFrames, {
-  { isSessionEncrypted = true, isSentDataEncrypted = false }
-})
-runner.Step("PutFile. Session Secure. Sent data UNprotected + Malformed frame", common.putFileByFrames, {
-  { isSessionEncrypted = true, isSentDataEncrypted = false, isMalformedFrameInserted = true }
-})
 runner.Step("PutFile. Session Secure. Sent data Protected", common.putFileByFrames, {
   { isSessionEncrypted = true, isSentDataEncrypted = true }
-})
-runner.Step("PutFile. Session Secure. Sent data Protected + Malformed frame", common.putFileByFrames, {
-  { isSessionEncrypted = true, isSentDataEncrypted = true, isMalformedFrameInserted = true }
 })
 
 runner.Title("Postconditions")
